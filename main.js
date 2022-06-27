@@ -5,8 +5,8 @@ canvas.width = window.innerWidth - 100;
 canvas.height = window.innerHeight - 100;
 
 var dino = {
-    x:10,
-    y:200,
+    x:100,
+    y:500,
     width:50,
     height:50,
     draw(){
@@ -34,9 +34,10 @@ cactus.draw();
 var timer = 0;
 var cactusArr = [];
 var jumpTimer = 0;
+var animation;
 
 function perframes(){
-    requestAnimationFrame(perframes);
+    animation = requestAnimationFrame(perframes);
     timer++;
 
     ctx.clearRect(0,0,canvas.width, canvas.height);
@@ -51,6 +52,8 @@ function perframes(){
             o.splice(i,1);
         }
         a.x-=7;
+
+        crush(dino, a);
         a.draw();
     })
     
@@ -59,18 +62,28 @@ function perframes(){
         jumpTimer++;
     }
     if(jumping == false){
-        if(dino.y < 200){
+        if(dino.y < 600){
             dino.y+=6;
         }
     }
-    if(jumpTimer > 20){
+    if(jumpTimer > 20 ){
         jumping = false;
         jumpTimer = 0;
     }
-
     dino.draw()
 }
 perframes();
+
+
+function crush(dino, cactus){
+    var xDistance = cactus.x - (dino.x + dino.width);
+    var yDistance = cactus.y - (dino.y + dino.height);
+    if(xDistance < 0 && yDistance < 0){
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        cancelAnimationFrame(animation);
+    }
+}
+
 
 var jumping = false
 document.addEventListener('keydown',function(e){
