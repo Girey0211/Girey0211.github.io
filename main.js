@@ -76,9 +76,12 @@ perframes();
 
 
 function crush(dino, cactus){
-    var xDistance = cactus.x - (dino.x + dino.width);
-    var yDistance = cactus.y - (dino.y + dino.height);
-    if(xDistance < 0 && yDistance < 0){
+    if( cactus.x < dino.x + dino.width &&
+        cactus.x + cactus.width > dino.x &&
+        cactus.y < dino.y + dino.height &&
+        cactus.y + cactus.height > dino.y
+        
+        ){
         ctx.clearRect(0,0,canvas.width, canvas.height);
         cancelAnimationFrame(animation);
     }
