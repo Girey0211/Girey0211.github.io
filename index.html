@@ -10,26 +10,7 @@
     </style>
 </head>
 <body>
-    <h1>counter 구현하기</h1>
-    <p id="number">0</p>
-    <div>
-        <button id="inc">+1</button>
-        <button id="dec">-1</button>
-    </div>
-    <script>
-        const $number=document.getElementById("number");
-        const $incBtn=document.getElementById("inc");
-        const $decBtn=document.getElementById("dec");
-        $incBtn.addEventListener("click",increase);
-        function increase() {
-            const current=parseInt($number.textContent);
-            $number.textContent=current+1;
-        }
-        $decBtn.addEventListener("click",decrease);
-        function decrease() {
-            const current=parseInt($number.textContent);
-            $number.textContent=current-1;
-        }
-    </script>
+    <canvas id="canvas"></canvas>
+    <script src="main.js"></script>
 </body>
 </html>
