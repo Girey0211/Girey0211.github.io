@@ -1,0 +1,10 @@
+.move {
+    width: 500px;
+    height: 300px;
+    margin:0 auto;
+    padding: 25px 0;
+    float: left;
+}
+body{
+    background-color: black;
+}
