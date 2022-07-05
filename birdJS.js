@@ -4,29 +4,32 @@ var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth - 100;
 canvas.height = window.innerHeight - 100;
 
-var birdimg = new Image();
-birdimg.src = './birdd.png'
+var img1 = new Image();
+img1.src = './birdd.png'
+
+var img2 = new Image();
+img2.src = './cactus.png'
 
 var dino = {
     x:100,
     y:500,
-    width:30,
-    height:30,
+    width:25,
+    height:25,
     draw(){
-        ctx.drawImage(birdimg, this.x, this.y);
+
+        ctx.drawImage(img1, this.x, this.y);
     }
 }
 
 class Cactus {
     constructor(){
     this.x = 2000;
-    this.y = Math.random() * 1000 % 650;
-    this.width = 50;
-    this.height = 50;
+    this.y = Math.random() * 1000 % 500;
+    this.width = 40;
+    this.height = 40;
     }
     draw(){
-        ctx.fillStyle = 'red';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(img2, this.x, this.y);
     }
 }
 var cactus = new Cactus();
@@ -37,13 +40,15 @@ var cactusArr = [];
 var jumpTimer = 0;
 var animation;
 
+let score1= 0
+
 function perframes(){
     animation = requestAnimationFrame(perframes);
     timer++;
-
+    let score = document.getElementById("score");
     ctx.clearRect(0,0,canvas.width, canvas.height);
 
-    if (timer %25 == 0){
+    if (timer %15 == 0){
         var cactus = new Cactus();
         cactusArr.push(cactus);
     }
@@ -51,6 +56,8 @@ function perframes(){
     cactusArr.forEach((a, i, o)=>{
         if(a.x < 0){
             o.splice(i,1);
+            score1++;
+            score.innerHTML= score1.toString();
         }
         a.x-=7;
 
@@ -65,7 +72,7 @@ function perframes(){
         jumpTimer++;
     }
     if(jumping == false){
-        if(dino.y < 600){
+        if(dino.y < 500){
             dino.y+=4;
         }
     
