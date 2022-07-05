@@ -13,8 +13,8 @@ img2.src = './cactus.png'
 var dino = {
     x:100,
     y:500,
-    width:30,
-    height:30,
+    width:40,
+    height:40,
     draw(){
 
         ctx.drawImage(img1, this.x, this.y);
