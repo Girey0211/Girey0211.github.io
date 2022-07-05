@@ -13,8 +13,8 @@ img2.src = './cactus.png'
 var dino = {
     x:100,
     y:500,
-    width:25,
-    height:25,
+    width:30,
+    height:30,
     draw(){
 
         ctx.drawImage(img1, this.x, this.y);
@@ -25,8 +25,8 @@ class Cactus {
     constructor(){
     this.x = 2000;
     this.y = Math.random() * 1000 % 500;
-    this.width = 40;
-    this.height = 40;
+    this.width = 48;
+    this.height = 48;
     }
     draw(){
         ctx.drawImage(img2, this.x, this.y);
