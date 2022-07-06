@@ -12,7 +12,11 @@ class App{
         window.addEventListener('resize', this.resize.bind(this), false);
         this.resize();
 
-        this.ball = new Ball(this.stageWidth, this.stageHeight, 30, 15);
+        document.addEventListener('keydown',function(t){
+            if(t.code === 'Space'){
+                this.ball = new Ball(this.stageWidth, this.stageHeight, 30, 15);
+            }
+        })
 
         window.requestAnimationFrame(this.animate.bind(this));
     }
