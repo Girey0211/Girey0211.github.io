@@ -12,7 +12,7 @@ class App{
         window.addEventListener('resize', this.resize.bind(this), false);
         this.resize();
 
-        this.ball = new Ball(this.stageWidth, this.stageHeight, 60, 15)
+        this.ball = new Ball(this.stageWidth, this.stageHeight, 30, 15)
 
         window.requestAnimationFrame(this.animate.bind(this));
     }
@@ -31,11 +31,7 @@ class App{
 
         this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
 
-        document.addEventListener('keydown',function(t){
-            if(e.code === 'Space'){
-                this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
-            }
-        })
+        this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
 
         
     }
