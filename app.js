@@ -31,7 +31,13 @@ class App{
 
         this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
 
-        this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
+        document.addEventListener('keydown',function(t){
+            if(e.code === 'Space'){
+                this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
+            }
+        })
+
+        
     }
 }
 
