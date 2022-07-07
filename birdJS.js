@@ -58,7 +58,7 @@ function perframes(){
             score1++;
             score.innerHTML= score1.toString();
         }
-        a.x-=90;
+        a.x-=9;
 
         crush(diiiiiino, a);
         a.draw();
