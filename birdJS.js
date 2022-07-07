@@ -83,7 +83,7 @@ function perframes(){
 
     if(score1 === 500){
         cancelAnimationFrame(animation);
-        document.write("CLEAR! THANKS TO YOUR PLAY!")
+        document.write("<h1>CLEAR! THANKS TO YOUR PLAY!</h1>")
     }
 
     diiiiiino.draw()
