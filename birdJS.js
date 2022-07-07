@@ -60,7 +60,7 @@ function perframes(){
         }
         a.x-=9;
 
-        crush(diiiiiino, a);
+        qkrdkTek(diiiiiino, a);
         a.draw();
     })
     
@@ -82,7 +82,6 @@ function perframes(){
     }
 
     if(score1 === 500){
-        ctx.clearRect(0,0,canvas.width, canvas.height);
         cancelAnimationFrame(animation);
         document.write("CLEAR! THANKS TO YOUR PLAY!")
     }
@@ -92,7 +91,7 @@ function perframes(){
 perframes();
 
 
-function crush(diiiiiino, cactus){
+function qkrdkTek(diiiiiino, cactus){
     if( cactus.x < diiiiiino.x + diiiiiino.width &&
         cactus.x + cactus.width > diiiiiino.x &&
         cactus.y < diiiiiino.y + diiiiiino.height &&
