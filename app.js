@@ -12,11 +12,7 @@ class App{
         window.addEventListener('resize', this.resize.bind(this), false);
         this.resize();
 
-        document.addEventListener('keydown',function(t){
-            if(t.code === 'Space'){
-                this.ball = new Ball(this.stageWidth, this.stageHeight, 30, 15);
-            }
-        })
+        this.ball = new Ball(this.stageWidth, this.stageHeight, 30, 15);
 
         window.requestAnimationFrame(this.animate.bind(this));
     }
@@ -32,6 +28,10 @@ class App{
 
     animate(t){
         window.requestAnimationFrame(this.animate.bind(this));
+        if(create === true){
+            this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
+            create = false;
+        }
 
         this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
 
@@ -39,6 +39,13 @@ class App{
     }
 }
 
-window,onload = () => {
+var create = false;
+document.addEventListener('keydown',function(t){
+    if(t.code === 'Space'){
+        create = true;
+    }
+})
+
+window.onload = () => {
     new App();
 };

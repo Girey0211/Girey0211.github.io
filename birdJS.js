@@ -13,10 +13,9 @@ img2.src = './cactus.png'
 var diiiiiino = {
     x:100,
     y:500,
-    width:35,
-    height:35,
+    width:30,
+    height:30,
     draw(){
-
         ctx.drawImage(img1, this.x, this.y);
     }
 }
@@ -25,8 +24,8 @@ class Cactus {
     constructor(){
     this.x = 2000;
     this.y = Math.random() * 1000 % 500;
-    this.width = 50;
-    this.height = 50;
+    this.width = 40;
+    this.height = 40;
     }
     draw(){
         ctx.drawImage(img2, this.x, this.y);
@@ -48,7 +47,7 @@ function perframes(){
     let score = document.getElementById("score");
     ctx.clearRect(0,0,canvas.width, canvas.height);
 
-    if (timer %15 == 0){
+    if (timer %20 === 0){
         var cactus = new Cactus();
         cactusArr.push(cactus);
     }
@@ -59,19 +58,19 @@ function perframes(){
             score1++;
             score.innerHTML= score1.toString();
         }
-        a.x-=11;
+        a.x-=90;
 
         crush(diiiiiino, a);
         a.draw();
     })
     
-    if(jumping == true){
+    if(jumping === true){
         if(diiiiiino.y > 0){
             diiiiiino.y-=4;
         }
         jumpTimer++;
     }
-    if(jumping == false){
+    if(jumping === false){
         if(diiiiiino.y < 500){
             diiiiiino.y+=4;
         }
@@ -80,6 +79,12 @@ function perframes(){
     if(jumpTimer > 30 ){
         jumping = false;
         jumpTimer = 0;
+    }
+
+    if(score1 === 500){
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        cancelAnimationFrame(animation);
+        document.write("CLEAR! THANKS TO YOUR PLAY!")
     }
 
     diiiiiino.draw()
@@ -100,7 +105,7 @@ function crush(diiiiiino, cactus){
 }
 
 
-var jumping = false
+var jumping = false;
 document.addEventListener('keydown',function(e){
     if(e.code === 'Space'){
         jumping = true;
