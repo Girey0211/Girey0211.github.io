@@ -2,6 +2,8 @@ import {
     Ball
 } from './ball.js';
 
+var ballarr = [];
+
 class App{
     constructor(){
         this.canvas = document.createElement('canvas');
@@ -28,23 +30,19 @@ class App{
 
     animate(t){
         window.requestAnimationFrame(this.animate.bind(this));
-        if(create === true){
-            this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
-            create = false;
-        }
+
+        document.addEventListener('keydown',function(t){
+            if(t.code === 'Space'){
+                var ball = new Ball(this.stageWidth, this.stageHeight, 30, 15);
+                ballarr.push(cactus);
+            }
+        })
 
         this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
 
         this.ball.draw(this.ctx, this.stageWidth, this.stageHeight);
     }
 }
-
-var create = false;
-document.addEventListener('keydown',function(t){
-    if(t.code === 'Space'){
-        create = true;
-    }
-})
 
 window.onload = () => {
     new App();
