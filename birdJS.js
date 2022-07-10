@@ -5,10 +5,13 @@ canvas.width = window.innerWidth - 100;
 canvas.height = window.innerHeight - 100;
 
 var img1 = new Image();
-img1.src = './birdd.png'
+img1.src = './images/birdd.png'
 
 var img2 = new Image();
-img2.src = './cactus.png'
+img2.src = './images/cactus.png'
+
+let backImg = new Image();
+backImg.src = "./images/amz.jpg";
 
 var bird = {
     x:100,
@@ -41,14 +44,19 @@ var animation;
 
 var score = document.getElementById("score");
 let score1 = 0;
-var level = document.getElementById("le");
+var level = document.getElementById("level");
 let level1 = 1;
+
+let lev1 = false;
+let lev2 = false;
 
 function perframes(){
     animation = requestAnimationFrame(perframes);
     timer++;
     let score = document.getElementById("score");
     ctx.clearRect(0,0,canvas.width, canvas.height);
+
+    ctx.drawImage(backImg,0,0,canvas.width,canvas.height);
 
     if (timer % (22 - (level1*2)) === 0){
         var cactus = new Cactus();
@@ -67,11 +75,13 @@ function perframes(){
         a.draw();
     })
 
-    if(score1 === 100){
+    if(score1 === 100 && lev1 === false){
+        lev1 = true;
         level1++;
         level.innerHTML = level1.toString();
     }
-    if(score1 === 200){
+    if(score1 === 200 && lev2 === false){
+        lev2 = true;
         level1++;
         level.innerHTML = level1.toString();
     }
@@ -111,6 +121,7 @@ function crush(bird, cactus){
     ){
         ctx.clearRect(0,0,canvas.width, canvas.height);
         cancelAnimationFrame(animation);
+        ctx.drawImage(backImg,0,0,canvas.width,canvas.height);
     }
 }
 

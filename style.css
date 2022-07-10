@@ -5,13 +5,21 @@
 .move {
     width: 500px;
     height: 300px;
-    margin:0 auto;
-    padding: 25px 0;
+    margin: 50px auto;
     display: inline;
+    object-fit: contain;
 }
 #container{
     width: 100%;
     height: 100%;
     margin: 0 auto;
     display: flex;
+}
+#back{
+    position: relative;
+    top: 0;
+    left: 0;
+    background-image: url('./images/birdback.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
