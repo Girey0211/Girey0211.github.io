@@ -39,9 +39,9 @@ var cactusArr = [];
 var jumpTimer = 0;
 var animation;
 
-let score = document.getElementById("score");
+var score = document.getElementById("score");
 let score1 = 0;
-let level = document.getElementById("level");
+var level = document.getElementById("le");
 let level1 = 1;
 
 function perframes(){
@@ -50,7 +50,7 @@ function perframes(){
     let score = document.getElementById("score");
     ctx.clearRect(0,0,canvas.width, canvas.height);
 
-    if (timer %20 === 0){
+    if (timer % (22 - (level1*2)) === 0){
         var cactus = new Cactus();
         cactusArr.push(cactus);
     }
@@ -61,17 +61,17 @@ function perframes(){
             score1++;
             score.innerHTML= score1.toString();
         }
-        a.x-=9;
+        a.x -= (5 + (level1 * 2));
 
         crush(bird, a);
         a.draw();
     })
 
-    if(score1 === 200){
+    if(score1 === 100){
         level1++;
         level.innerHTML = level1.toString();
     }
-    if(score1 === 400){
+    if(score1 === 200){
         level1++;
         level.innerHTML = level1.toString();
     }
@@ -93,7 +93,7 @@ function perframes(){
         jumpTimer = 0;
     }
 
-    if(score1 === 500){
+    if(score1 === 300){
         cancelAnimationFrame(animation);
         document.write("<h1>CLEAR! THANKS TO YOUR PLAY!</h1>")
     }
