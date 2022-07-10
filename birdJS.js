@@ -1,8 +1,11 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
+// score1 = parseInt(localStorage.getItem("score"));
+// localStorage.setItem("score", score1);
+
 canvas.width = window.innerWidth - 100;
-canvas.height = window.innerHeight - 100;
+canvas.height = 550;
 
 var img1 = new Image();
 img1.src = './images/birdd.png'
@@ -46,6 +49,10 @@ var score = document.getElementById("score");
 let score1 = 0;
 var level = document.getElementById("level");
 let level1 = 1;
+var highscore = document.getElementById("highscore");
+let hs1 = parseInt(localStorage.getItem("hs ")) || 0;
+
+highscore.innerHTML= hs1.toString();
 
 let lev1 = false;
 let lev2 = false;
@@ -56,9 +63,9 @@ function perframes(){
     let score = document.getElementById("score");
     ctx.clearRect(0,0,canvas.width, canvas.height);
 
-    ctx.drawImage(backImg,0,0,canvas.width,canvas.height);
+    ctx.drawImage(backImg,0,0,canvas.width,550);
 
-    if (timer % (22 - (level1*2)) === 0){
+    if (timer % (22 - level1) === 0){
         var cactus = new Cactus();
         cactusArr.push(cactus);
     }
@@ -69,7 +76,7 @@ function perframes(){
             score1++;
             score.innerHTML= score1.toString();
         }
-        a.x -= (5 + (level1 * 2));
+        a.x -= (6 + level1);
 
         crush(bird, a);
         a.draw();
@@ -121,7 +128,13 @@ function crush(bird, cactus){
     ){
         ctx.clearRect(0,0,canvas.width, canvas.height);
         cancelAnimationFrame(animation);
-        ctx.drawImage(backImg,0,0,canvas.width,canvas.height);
+        ctx.drawImage(backImg,0,0,canvas.width,550);
+
+        if(score1 > hs1){
+            hs1 = score1;
+            score.innerHTML= score1.toString();
+            localStorage.setItem("hs", hs1);
+        }
     }
 }
 

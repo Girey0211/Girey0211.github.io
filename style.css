@@ -8,6 +8,7 @@
     margin: 50px auto;
     display: inline;
     object-fit: contain;
+    cursor: pointer;
 }
 #container{
     width: 100%;
