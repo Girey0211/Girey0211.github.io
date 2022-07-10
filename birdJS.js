@@ -50,7 +50,7 @@ let score1 = 0;
 var level = document.getElementById("level");
 let level1 = 1;
 var highscore = document.getElementById("highscore");
-let hs1 = parseInt(localStorage.getItem("hs ")) || 0;
+let hs1 = parseInt(localStorage.getItem("hs")) || 0;
 
 highscore.innerHTML= hs1.toString();
 
@@ -126,15 +126,15 @@ function crush(bird, cactus){
         cactus.y < bird.y + bird.height &&
         cactus.y + cactus.height > bird.y
     ){
-        ctx.clearRect(0,0,canvas.width, canvas.height);
-        cancelAnimationFrame(animation);
-        ctx.drawImage(backImg,0,0,canvas.width,550);
-
         if(score1 > hs1){
             hs1 = score1;
             score.innerHTML= score1.toString();
             localStorage.setItem("hs", hs1);
         }
+
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        cancelAnimationFrame(animation);
+        ctx.drawImage(backImg,0,0,canvas.width,550);
     }
 }
 
