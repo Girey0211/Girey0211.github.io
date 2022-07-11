@@ -55,11 +55,21 @@ let clearment = document.getElementById("clearment");
 let hsc = document.getElementById("hsc");
 let sc = document.getElementById("sc");
 let le = document.getElementById("le");
+let ti = document.getElementById("ti");
 
 let thank = document.getElementById("thank");
 
 let lev1 = false;
 let lev2 = false;
+
+let sec = parseInt(localStorage.getItem("sec")) || 0;
+let min = parseInt(localStorage.getItem("min")) || 0;
+let hor = parseInt(localStorage.getItem("hor")) || 0;
+let second = document.getElementById("second");
+let minute = document.getElementById("minute");
+let hour = document.getElementById("hour");
+
+let timeron = true;
 
 function perframes(){
     animation = requestAnimationFrame(perframes);
@@ -113,10 +123,21 @@ function perframes(){
         jumping = false;
         jumpTimer = 0;
     }
+    if(sec >= 60){
+        sec %= 60;
+        min++;
+    }
+    if(min >= 60){
+        min %= 60;
+        hor++;
+    }
 
     if(score1 === 300){
         cancelAnimationFrame(animation);
         localStorage.setItem("hs", "300");
+        localStorage.setItem("sec", sec);
+        localStorage.setItem("min", min);
+        localStorage.setItem("hor", hor);
         ctx.clearRect(0,0,canvas.width, canvas.height);
         clearment.style.visibility = 'visible';
         score.style.visibility = 'hidden';
@@ -125,6 +146,7 @@ function perframes(){
         hsc.style.visibility = 'hidden';
         sc.style.visibility = 'hidden';
         le.style.visibility = 'hidden';
+        ti.style.visibility = 'hidden';
         thank.style.visibility = "visible";
         thank.style.left = bird.x
         thank.style.top = bird.y
@@ -147,12 +169,24 @@ function crush(bird, cactus){
             localStorage.setItem("hs", hs1);
         }
 
+        timeron = false;
+        localStorage.setItem("sec", sec);
+        localStorage.setItem("min", min);
+        localStorage.setItem("hor", hor);
+
         ctx.clearRect(0,0,canvas.width, canvas.height);
         cancelAnimationFrame(animation);
         ctx.drawImage(backImg,0,0,canvas.width,550);
     }
 }
-
+var x = setInterval(function (){
+    if(timeron === true) {
+        sec++;
+        second.innerHTML = sec.toString();
+        minute.innerHTML = min.toString();
+        hour.innerHTML = hor.toString();
+    }
+},1000);
 
 var jumping = false;
 document.addEventListener('keydown',function(e){
