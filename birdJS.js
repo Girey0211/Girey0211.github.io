@@ -123,12 +123,12 @@ function perframes(){
         jumping = false;
         jumpTimer = 0;
     }
-    if(sec >= 60){
-        sec %= 60;
+    if(sec >= 59){
+        sec -= 60;
         min++;
     }
-    if(min >= 60){
-        min %= 60;
+    if(min >= 59){
+        min -= 60;
         hor++;
     }
 
@@ -177,6 +177,10 @@ function crush(bird, cactus){
         ctx.clearRect(0,0,canvas.width, canvas.height);
         cancelAnimationFrame(animation);
         ctx.drawImage(backImg,0,0,canvas.width,550);
+
+        alert("GAME OVER");
+        alert("다시 플레이 하시겠습니까?");
+        window.location.reload();
     }
 }
 var x = setInterval(function (){
