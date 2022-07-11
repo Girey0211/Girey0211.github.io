@@ -48,8 +48,15 @@ var level = document.getElementById("level");
 let level1 = 1;
 var highscore = document.getElementById("highscore");
 let hs1 = parseInt(localStorage.getItem("hs")) || 0;
-
 highscore.innerHTML= hs1.toString();
+
+let clearment = document.getElementById("clearment");
+
+let hsc = document.getElementById("hsc");
+let sc = document.getElementById("sc");
+let le = document.getElementById("le");
+
+let thank = document.getElementById("thank");
 
 let lev1 = false;
 let lev2 = false;
@@ -79,12 +86,12 @@ function perframes(){
         a.draw();
     })
 
-    if(score1 === 100 && lev1 === false){
+    if(score1 >= 100 && lev1 === false){
         lev1 = true;
         level1++;
         level.innerHTML = level1.toString();
     }
-    if(score1 === 200 && lev2 === false){
+    if(score1 >= 200 && lev2 === false){
         lev2 = true;
         level1++;
         level.innerHTML = level1.toString();
@@ -110,7 +117,17 @@ function perframes(){
     if(score1 === 300){
         cancelAnimationFrame(animation);
         localStorage.setItem("hs", "300");
-        document.write("<p>CLEAR! THANKS TO YOUR PLAY!</p>");
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        clearment.style.visibility = 'visible';
+        score.style.visibility = 'hidden';
+        level.style.visibility = 'hidden';
+        highscore.style.visibility = 'hidden';
+        hsc.style.visibility = 'hidden';
+        sc.style.visibility = 'hidden';
+        le.style.visibility = 'hidden';
+        thank.style.visibility = "visible";
+        thank.style.left = bird.x
+        thank.style.top = bird.y
     }
 
     bird.draw()
