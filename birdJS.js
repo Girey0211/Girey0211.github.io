@@ -71,6 +71,9 @@ let hour = document.getElementById("hour");
 
 let timeron = true;
 
+var audio = new Audio('BikeRides.mp3');
+audio.play();
+
 function perframes(){
     animation = requestAnimationFrame(perframes);
     timer++;

@@ -5,7 +5,7 @@
 .move {
     width: 500px;
     height: 300px;
-    margin: 50px auto;
+    margin: 50px auto 0 auto;
     display: inline;
     object-fit: contain;
     cursor: pointer;
@@ -23,4 +23,26 @@
     background-image: url('./images/birdback.png');
     background-repeat: no-repeat;
     background-size: cover;
+}
+body{
+    background-color: coral;
+}
+.move .tuto{
+    background-color: #2C2A29;
+}
+.move .tuto > ul > li {
+    color: #999;
+    font-weight: 900;
+    list-style: none;
+}
+.move:hover {
+    background-color: #2C2A29;
+    color: #669900;
+    border-radius: 6px 6px 0 0;
+}
+.move:hover .tuto {
+    display: block;
+}
+.tuto{
+    display: none;
 }
