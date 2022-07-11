@@ -1,9 +1,6 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-// score1 = parseInt(localStorage.getItem("score"));
-// localStorage.setItem("score", score1);
-
 canvas.width = window.innerWidth - 100;
 canvas.height = 550;
 
@@ -65,7 +62,7 @@ function perframes(){
 
     ctx.drawImage(backImg,0,0,canvas.width,550);
 
-    if (timer % (22 - level1) === 0){
+    if (timer % (23 - (level1 * 4)) === 0){
         var cactus = new Cactus();
         cactusArr.push(cactus);
     }
@@ -76,7 +73,7 @@ function perframes(){
             score1++;
             score.innerHTML= score1.toString();
         }
-        a.x -= (6 + level1);
+        a.x -= (5 + (level1 * 2));
 
         crush(bird, a);
         a.draw();
@@ -112,7 +109,8 @@ function perframes(){
 
     if(score1 === 300){
         cancelAnimationFrame(animation);
-        document.write("<h1>CLEAR! THANKS TO YOUR PLAY!</h1>")
+        localStorage.setItem("hs", "300");
+        document.write("<p>CLEAR! THANKS TO YOUR PLAY!</p>");
     }
 
     bird.draw()
@@ -128,7 +126,7 @@ function crush(bird, cactus){
     ){
         if(score1 > hs1){
             hs1 = score1;
-            score.innerHTML= score1.toString();
+            score.innerHTML= hs1.toString();
             localStorage.setItem("hs", hs1);
         }
 
