@@ -1,8 +1,8 @@
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth - 100;
-canvas.height = 640;
+canvas.width = window.innerWidth - 33 ;
+canvas.height = window.innerHeight - 110;
 
 var img1 = new Image();
 img1.src = './images/birdd.png'
@@ -26,7 +26,7 @@ var bird = {
 class Cactus {
     constructor(){
         this.x = 2000;
-        this.y = Math.random() * 1000 % 590;
+        this.y = (Math.random() * 1000) % (innerHeight - 145);
         this.width = 40;
         this.height = 40;
     }
@@ -80,7 +80,7 @@ function perframes(){
     let score = document.getElementById("score");
     ctx.clearRect(0,0,canvas.width, canvas.height);
 
-    ctx.drawImage(backImg,0,0,canvas.width,640);
+    ctx.drawImage(backImg,0,0,canvas.width + 30,innerHeight);
 
     if (timer % (23 - (level1 * 4)) === 0){
         var cactus = new Cactus();
@@ -117,7 +117,7 @@ function perframes(){
         jumpTimer++;
     }
     if(jumping === false){
-        if(bird.y < 590){
+        if(bird.y < (innerHeight - 160)){
             bird.y+=4;
         }
 
@@ -199,4 +199,34 @@ document.addEventListener('keydown',function(e){
     if(e.code === 'Space'){
         jumping = true;
     }
-})
+});
+
+var keydownCtrl = 0;
+var keydownShift = 0;
+
+document.onkeydown=keycheck;
+document.onkeyup=uncheckCtrlShift;
+
+function keycheck()
+{
+    switch(event.keyCode){
+        case 123:event.keyCode='';return false; break; //F12
+        case 17:event.keyCode='';keydownCtrl=1;return false; break; //컨트롤키
+    }
+
+    if(keydownCtrl) return false;
+}
+
+function uncheckCtrlShift()
+{
+    if(event.keyCode==17)      keydownCtrl=0;
+    if(event.keyCode==16)      keydownShift=0;
+}
+
+
+function click()
+{
+    if ((event.button==2) || (event.button==2))
+    {alert('코드보지마!!');}
+}
+document.onmousedown=click;
