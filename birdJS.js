@@ -130,7 +130,7 @@ function perframes(){
         sec -= 60;
         min++;
     }
-    if(min >= 59){
+    if(min >= 60){
         min -= 60;
         hor++;
     }
