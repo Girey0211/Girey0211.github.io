@@ -2,7 +2,7 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth - 100;
-canvas.height = 550;
+canvas.height = 640;
 
 var img1 = new Image();
 img1.src = './images/birdd.png'
@@ -26,7 +26,7 @@ var bird = {
 class Cactus {
     constructor(){
         this.x = 2000;
-        this.y = Math.random() * 1000 % 500;
+        this.y = Math.random() * 1000 % 590;
         this.width = 40;
         this.height = 40;
     }
@@ -80,7 +80,7 @@ function perframes(){
     let score = document.getElementById("score");
     ctx.clearRect(0,0,canvas.width, canvas.height);
 
-    ctx.drawImage(backImg,0,0,canvas.width,550);
+    ctx.drawImage(backImg,0,0,canvas.width,640);
 
     if (timer % (23 - (level1 * 4)) === 0){
         var cactus = new Cactus();
@@ -117,7 +117,7 @@ function perframes(){
         jumpTimer++;
     }
     if(jumping === false){
-        if(bird.y < 500){
+        if(bird.y < 590){
             bird.y+=4;
         }
 
@@ -179,7 +179,6 @@ function crush(bird, cactus){
 
         ctx.clearRect(0,0,canvas.width, canvas.height);
         cancelAnimationFrame(animation);
-        ctx.drawImage(backImg,0,0,canvas.width,550);
 
         alert("GAME OVER");
         alert("다시 플레이 하시겠습니까?");

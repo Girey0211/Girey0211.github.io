@@ -28,7 +28,7 @@ body{
     background-color: coral;
 }
 .move .tuto{
-    background-color: #2C2A29;
+    background-color: #161e38;
 }
 .move .tuto > ul > li {
     color: #999;
@@ -36,7 +36,7 @@ body{
     list-style: none;
 }
 .move:hover {
-    background-color: #2C2A29;
+    background-color: #161e38   ;
     color: #669900;
     border-radius: 6px 6px 0 0;
 }
