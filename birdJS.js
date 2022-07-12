@@ -11,7 +11,7 @@ var img2 = new Image();
 img2.src = './images/cactus.png'
 
 let backImg = new Image();
-backImg.src = "./images/amz.jpg";
+backImg.src = "./images/jungle.png";
 
 var bird = {
     x:100,
@@ -71,7 +71,7 @@ let hour = document.getElementById("hour");
 
 let timeron = true;
 
-var audio = new Audio('BikeRides.mp3');
+var audio = new Audio('nico.mp3');
 audio.play();
 
 function perframes(){
